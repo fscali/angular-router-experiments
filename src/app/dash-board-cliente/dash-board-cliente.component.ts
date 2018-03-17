@@ -20,7 +20,10 @@ export class DashBoardClienteComponent implements OnInit {
 
   ngOnInit() {
     this.loggerService.log(
-      `E' stata instanziata la dashboard cliente sul cliente ${this.idCliente} `
+      `E' stata instanziata la dashboard cliente sul cliente ${
+        this.idCliente
+      } `,
+      "success"
     );
   }
 }

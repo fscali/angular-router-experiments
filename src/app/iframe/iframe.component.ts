@@ -31,14 +31,16 @@ export class IframeComponent implements OnInit {
     this.loggerService.log(
       `E' stato creato il componente ${this.constructor.name} avente id ${
         this.id
-      }`
+      }`,
+      "success"
     );
   }
   ngOnDestroy() {
     this.loggerService.log(
       `Sto eliminando il componente ${this.constructor.name} avente id ${
         this.id
-      }`
+      }`,
+      "warning"
     );
   }
 }

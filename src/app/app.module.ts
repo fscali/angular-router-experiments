@@ -10,8 +10,11 @@ import { CounterService } from "./counter.service";
 import { DashBoardClienteComponent } from "./dash-board-cliente/dash-board-cliente.component";
 import { RicercaClienteComponent } from "./ricerca-cliente/ricerca-cliente.component";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
-import { HomeComponent } from './home/home.component';
-import { MessagePanelComponent } from './message-panel/message-panel.component';
+import { HomeComponent } from "./home/home.component";
+import { MessagePanelComponent } from "./message-panel/message-panel.component";
+import { RouteReuseStrategy } from "@angular/router";
+import { CustomRouteReuseStrategy } from "./custom-route-reuse-strategy";
+import { MenuComponent } from "./menu/menu.component";
 
 @NgModule({
   declarations: [
@@ -20,10 +23,15 @@ import { MessagePanelComponent } from './message-panel/message-panel.component';
     DashBoardClienteComponent,
     RicercaClienteComponent,
     HomeComponent,
-    MessagePanelComponent
+    MessagePanelComponent,
+    MenuComponent
   ],
   imports: [BrowserModule, RouterModule, AppRoutingModule],
-  providers: [LoggerService, CounterService],
+  providers: [
+    LoggerService,
+    CounterService,
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

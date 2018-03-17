@@ -5,7 +5,8 @@
   </div>
   <div class="col-md-8">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let item of loggerService.getMessages()">{{item}}</li>
+      <!--      <li class="list-group-item list-group-item-info" *ngFor="let item of loggerService.getMessages()">{{item.message}}</li>-->
+      <li [ngClass]="['list-group-item', 'list-group-item-'+item.severity]" *ngFor=" let item of loggerService.getMessages() ">{{item.message}}</li>
 
     </ul>
   </div>

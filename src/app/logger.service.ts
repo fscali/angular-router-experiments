@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class LoggerService {
-  messages: string[] = [];
+  messages: any[] = [];
   constructor() {}
 
-  log(message: string) {
-    this.messages.push(message);
+  log(message: string, severity: string = "info") {
+    this.messages.push({ message, severity });
   }
 
   clear() {

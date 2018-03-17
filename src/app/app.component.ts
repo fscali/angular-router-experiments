@@ -14,7 +14,7 @@ export class AppComponent {
     this.router.navigate(["dashboard-cliente", value]);
   }
 
-  navigaIframe(funz: string, contestualizzata: boolean) {
-    this.router.navigate(["noclient", funz]);
+  getNumberOfIframes() {
+    return document.querySelectorAll("iframe").length;
   }
 }
