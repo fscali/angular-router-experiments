@@ -13,4 +13,8 @@ export class AppComponent {
     $event.preventDefault();
     this.router.navigate(["dashboard-cliente", value]);
   }
+
+  navigaIframe(funz: string, contestualizzata: boolean) {
+    this.router.navigate(["noclient", funz]);
+  }
 }

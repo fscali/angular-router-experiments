@@ -19,11 +19,22 @@
 
     <div class="col-md-4">
       <ul class="list-group">
-        <li class="list-group-item">Pagina non contestualizzata funzione1</li>
-        <li class="list-group-item">Pagina non contestualizzata funzione2</li>
-        <li class="list-group-item">Pagina contestualizzata funzione3</li>
-        <li class="list-group-item">Pagina contestualizzata funzione4</li>
-        <li class="list-group-item">Pagina contestualizzata funzione5</li>
+        <li class="list-group-item">
+          <button type="button" class="btn btn-link" (click)="navigaIframe('funzione1', false)">Pagina non contestualizzata funzione1</button>
+        </li>
+        <li class="list-group-item">
+          <button type="button" class="btn btn-link" (click)="navigaIframe('funzione2', false)">Pagina non contestualizzata funzione2</button>
+        </li>
+        <li class="list-group-item">
+          <button type="button" class="btn btn-link" (click)="navigaIframe('funzione3', true)">Pagina contestualizzata funzione3</button>
+        </li>
+        <li class="list-group-item">
+          <button type="button" class="btn btn-link" (click)="navigaIframe('funzione4', true)">Pagina contestualizzata funzione4</button>
+        </li>
+        <li class="list-group-item">
+          <button type="button" class="btn btn-link" (click)="navigaIframe('funzione5', true)">Pagina contestualizzata funzione5</button>
+        </li>
+
       </ul>
 
     </div>

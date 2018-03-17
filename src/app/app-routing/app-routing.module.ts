@@ -5,9 +5,11 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from "../app.component";
 import { DashBoardClienteComponent } from "../dash-board-cliente/dash-board-cliente.component";
 import { HomeComponent } from "../home/home.component";
+import { IframeComponent } from "../iframe/iframe.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
+  { path: "noclient/:url", component: IframeComponent },
   { path: "dashboard-cliente/:id", component: DashBoardClienteComponent },
   {
     path: "",

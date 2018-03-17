@@ -1,7 +1,9 @@
-<div class="row pre-scrollable">
+<div class="row pre-scrollable" style="padding-top: 30px;">
 
-
-  <div class="col-md-8 offset-md-4">
+  <div class="col-md-1 offset-md-3">
+    <button type="button" class="btn btn-warning" (click)="pulisci()">Pulisci</button>
+  </div>
+  <div class="col-md-8">
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let item of loggerService.getMessages()">{{item}}</li>
 

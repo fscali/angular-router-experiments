@@ -10,4 +10,7 @@ export class MessagePanelComponent implements OnInit {
   constructor(private loggerService: LoggerService) {}
 
   ngOnInit() {}
+  pulisci() {
+    this.loggerService.clear();
+  }
 }
