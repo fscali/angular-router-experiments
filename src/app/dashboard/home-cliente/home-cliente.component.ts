@@ -11,8 +11,11 @@ export class HomeClienteComponent implements OnInit {
   idCliente: string;
 
   constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
+    /*  this.route.params.subscribe(params => {
       this.idCliente = params["id"];
+    }); */
+    this.route.data.subscribe((data: { cliente: string }) => {
+      this.idCliente = data.cliente;
     });
   }
 

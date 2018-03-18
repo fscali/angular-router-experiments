@@ -27,9 +27,6 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
   }
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
-    this.log(
-      `Chiamato shouldDetach per route con chiave ${this.getRouteKey(route)}`
-    );
     return true;
   }
 
@@ -47,6 +44,8 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
   }
 
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
+    if (!route.routeConfig) return null;
+    if (route.routeConfig.loadChildren) return null;
     const key = this.getRouteKey(route);
     return this.handlers[key];
   }
@@ -57,9 +56,9 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
   ): boolean {
     const keyFuture = !!future ? this.getRouteKey(future) : undefined;
     const keyCurr = !!curr ? this.getRouteKey(curr) : undefined;
-    this.log(
+    /* this.log(
       `ShouldReuseRoute: keyFuture = ${keyFuture}, keyCurr = ${keyCurr}`
-    );
+    ); */
     const result =
       future.routeConfig === curr.routeConfig && keyFuture == keyCurr;
     return result;

@@ -4,6 +4,7 @@ import { Routes } from "@angular/router";
 import { RouterModule } from "@angular/router";
 import { DashBoardClienteComponent } from "./dash-board-cliente/dash-board-cliente.component";
 import { HomeClienteComponent } from "./home-cliente/home-cliente.component";
+import { IframeComponent } from "../shared/iframe/iframe.component";
 
 const routes: Routes = [
   {
@@ -11,12 +12,33 @@ const routes: Routes = [
     component: HomeClienteComponent,
     children: [
       {
-        path: ":id/dashboard",
+        path: "dashboard",
         component: DashBoardClienteComponent
       },
       {
-        path: ":id",
-        redirectTo: ":id/dashboard"
+        path: "funzionecliente1",
+        component: IframeComponent,
+        data: {
+          funzione: "funzionecliente1"
+        }
+      },
+      {
+        path: "funzionecliente2",
+        component: IframeComponent,
+        data: {
+          funzione: "funzionecliente2"
+        }
+      },
+      {
+        path: "funzionecliente3",
+        component: IframeComponent,
+        data: {
+          funzione: "funzionecliente3"
+        }
+      },
+      {
+        path: "",
+        redirectTo: "dashboard"
       }
     ]
 

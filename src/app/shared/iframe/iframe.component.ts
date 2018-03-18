@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
-import { LoggerService } from "../logger.service";
-import { CounterService } from "../counter.service";
 import { ActivatedRoute } from "@angular/router";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { LoggerService } from "../../logger.service";
+import { CounterService } from "../../counter.service";
 
 @Component({
   selector: "app-iframe",
@@ -19,10 +19,15 @@ export class IframeComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.id = this.counterService.getCounter();
-    this.route.params.subscribe(params => {
+    /* this.route.params.subscribe(params => {
       let funz = params["url"];
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
         `http://localhost:8080/static/index.html?url=${funz}`
+      );
+    }); */
+    this.route.data.subscribe(data => {
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
+        `http://localhost:8080/static/index.html?url=${data.funzione}`
       );
     });
   }

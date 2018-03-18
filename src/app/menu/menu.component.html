@@ -3,19 +3,19 @@
     <button type="button" class="btn btn-link" (click)="navigaHome()">Home</button>
   </li>
   <li class="list-group-item">
-    <button type="button" class="btn btn-link" (click)="navigaIframe('funzione1', false)">Pagina non contestualizzata funzione1</button>
+    <button type="button" class="btn btn-link" (click)="naviga('funzione1', false)">Pagina non contestualizzata funzione1</button>
   </li>
   <li class="list-group-item">
-    <button type="button" class="btn btn-link" (click)="navigaIframe('funzione2', false)">Pagina non contestualizzata funzione2</button>
+    <button type="button" class="btn btn-link" (click)="naviga('funzione2', false)">Pagina non contestualizzata funzione2</button>
   </li>
-  <li class="list-group-item">
-    <button type="button" class="btn btn-link" (click)="navigaIframe('funzione3', true)">Pagina contestualizzata funzione3</button>
+  <li class="list-group-item" *ngIf="isWithCliente">
+    <button type="button" class="btn btn-link" (click)="naviga('funzionecliente1', true)">Pagina contestualizzata funzionecliente1</button>
   </li>
-  <li class="list-group-item">
-    <button type="button" class="btn btn-link" (click)="navigaIframe('funzione4', true)">Pagina contestualizzata funzione4</button>
+  <li class="list-group-item" *ngIf="isWithCliente">
+    <button type="button" class="btn btn-link" (click)="naviga('funzionecliente2', true)">Pagina contestualizzata funzionecliente2</button>
   </li>
-  <li class="list-group-item">
-    <button type="button" class="btn btn-link" (click)="navigaIframe('funzione5', true)">Pagina contestualizzata funzione5</button>
+  <li class="list-group-item" *ngIf="isWithCliente">
+    <button type="button" class="btn btn-link" (click)="naviga('funzionecliente3', true)">Pagina contestualizzata funzionecliente3</button>
   </li>
 
 </ul>

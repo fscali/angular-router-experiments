@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, NavigationEnd, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-menu",
@@ -7,11 +7,29 @@ import { Router } from "@angular/router";
   styleUrls: ["./menu.component.css"]
 })
 export class MenuComponent implements OnInit {
-  constructor(private router: Router) {}
+  isWithCliente: boolean = false;
+  idCliente: string;
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url.startsWith("/cliente/")) {
+          this.isWithCliente = true;
+          this.idCliente = event.url.split("/")[2];
+        } else {
+          this.isWithCliente = false;
+          this.idCliente = undefined;
+        }
+      }
+    });
+  }
 
   ngOnInit() {}
-  navigaIframe(funz: string, contestualizzata: boolean) {
-    this.router.navigate(["noclient", funz]);
+  naviga(funz: string, withCliente: boolean) {
+    if (!withCliente) {
+      this.router.navigate([funz], { relativeTo: this.route.parent });
+    } else {
+      this.router.navigate(["cliente", this.idCliente, funz]);
+    }
   }
   navigaHome() {
     this.router.navigate(["/"]);
