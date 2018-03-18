@@ -3,14 +3,16 @@ import { CommonModule } from "@angular/common";
 import { Routes } from "@angular/router";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "../app.component";
-import { DashBoardClienteComponent } from "../dash-board-cliente/dash-board-cliente.component";
 import { HomeComponent } from "../home/home.component";
 import { IframeComponent } from "../iframe/iframe.component";
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
   { path: "noclient/:url", component: IframeComponent },
-  { path: "dashboard-cliente/:id", component: DashBoardClienteComponent },
+  {
+    path: "cliente",
+    loadChildren: "app/dashboard/dashboard.module#DashboardModule"
+  },
+  { path: "home", component: HomeComponent, pathMatch: "full" },
   {
     path: "",
     redirectTo: "/home",

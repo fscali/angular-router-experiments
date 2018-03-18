@@ -11,7 +11,8 @@ export class AppComponent {
   constructor(private router: Router) {}
   ricercaNDC(value: string, $event) {
     $event.preventDefault();
-    this.router.navigate(["dashboard-cliente", value]);
+    //this.router.navigate(["dashboard-cliente", value]);
+    this.router.navigate(["cliente", value]);
   }
 
   getNumberOfIframes() {

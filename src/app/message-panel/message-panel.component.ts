@@ -13,4 +13,6 @@ export class MessagePanelComponent implements OnInit {
   pulisci() {
     this.loggerService.clear();
   }
+
+  /*div.scrollTop = div.scrollHeight - div.clientHeight;*/
 }

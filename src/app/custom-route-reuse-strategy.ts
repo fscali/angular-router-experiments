@@ -2,22 +2,28 @@ import { ActivatedRouteSnapshot } from "@angular/router";
 import { RouteReuseStrategy, DetachedRouteHandle } from "@angular/router";
 import { LoggerService } from "./logger.service";
 import { Injector, Inject } from "@angular/core";
+import { NavigationUtilityService } from "./navigation/navigation-utility.service";
 
 export class CustomRouteReuseStrategy implements RouteReuseStrategy {
   private handlers: { [key: string]: DetachedRouteHandle } = {};
 
-  constructor(@Inject(LoggerService) private loggerService: LoggerService) {}
+  constructor(
+    @Inject(LoggerService) private loggerService: LoggerService,
+    @Inject(NavigationUtilityService)
+    private navigationUtilityService: NavigationUtilityService
+  ) {}
 
   log(message) {
-    // this.loggerService.log(`CUSTOM_ROUTE_STRATEGY: ${message}`, "primary");
+    this.loggerService.log(`CUSTOM_ROUTE_STRATEGY: ${message}`, "primary");
   }
   getRouteKey(route: ActivatedRouteSnapshot): string {
-    const key =
+    /* const key =
       route.url.join("/") ||
       (route.parent && route.parent.url.join("/")) ||
       undefined;
 
-    return key;
+    return key; */
+    return this.navigationUtilityService.getRouteKey(route);
   }
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
@@ -54,6 +60,8 @@ export class CustomRouteReuseStrategy implements RouteReuseStrategy {
     this.log(
       `ShouldReuseRoute: keyFuture = ${keyFuture}, keyCurr = ${keyCurr}`
     );
-    return future.routeConfig === curr.routeConfig && keyFuture == keyCurr;
+    const result =
+      future.routeConfig === curr.routeConfig && keyFuture == keyCurr;
+    return result;
   }
 }

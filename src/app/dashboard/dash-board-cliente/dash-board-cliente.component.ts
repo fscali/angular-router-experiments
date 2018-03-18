@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { LoggerService } from "../logger.service";
 import { ActivatedRoute } from "@angular/router";
+import { LoggerService } from "../../logger.service";
 
 @Component({
   selector: "app-dash-board-cliente",
